@@ -5,12 +5,11 @@ const app = express();
 
 //Connect DataBase
 connectDB();
-const opcionesCors = {
-    origin:'https://node-send-client-lemon.vercel.app', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+const corsOptions = {
+    origin: `${ process.env.FRONTEND_URL}`,
 }
-app.use(cors(opcionesCors));
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.static('uploads'))
